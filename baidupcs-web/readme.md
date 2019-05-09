@@ -1,7 +1,5 @@
 The Docker image for [BaiduPCS-Web](https://github.com/liuzhuoling2011/baidupcs-web)
 
-![](https://img.shields.io/docker/pulls/wahyd4/baidupcs.svg)
-
 ## Why
 
 The easiest and simplest way to run this application.
