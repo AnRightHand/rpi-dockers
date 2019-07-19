@@ -1,6 +1,8 @@
 
 Syncthing
-form https://github.com/linuxserver/docker-syncthing
+form
+https://hub.docker.com/r/linuxserver/syncthing 
+https://github.com/linuxserver/docker-syncthing
 
 
 docker run \
