@@ -15,6 +15,8 @@ COPY aria2.conf /config/aria2.conf
 COPY ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 #VOLUME /home/aria2
 
+RUN mkdir /config
+
 EXPOSE 6800
 
 CMD set -xe && \
