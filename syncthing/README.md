@@ -16,4 +16,4 @@ docker run \
   -v /path/to/data1:/data1 \
   -v /path/to/data2:/data2 \
   --restart unless-stopped \
-  linuxserver/syncthing
+  anrighthand/syncthing
