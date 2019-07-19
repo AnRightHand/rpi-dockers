@@ -11,9 +11,9 @@ RUN apk --update --no-cache add bash curl tar \
   && mkdir -p /etc/aria2 \
   && touch /etc/aria2/session.lock 
   
-RUN mkdir /config
+#RUN mkdir /config
 
-COPY aria2.conf /config/aria2.conf 
+#COPY aria2.conf /config/aria2.conf 
 COPY ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 #VOLUME /home/aria2
 
