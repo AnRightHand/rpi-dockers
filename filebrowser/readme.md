@@ -16,6 +16,7 @@ vi filebrowser.json
   "key": "/ssl.key" //   cert 和 key 两行配置
 }
 创建一个 db 文件
+
 touch database.db
 
 
