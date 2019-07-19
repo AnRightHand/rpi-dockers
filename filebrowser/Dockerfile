@@ -10,7 +10,7 @@ ENV FILE_BROWSER_URL=https://github.com/filebrowser/filebrowser/releases/downloa
   
 RUN apk --update --no-cache add bash curl tar \
   curl -sSL $FILE_BROWSER_URL \
-  mkdir /app
+  mkdir /app \
   tar -zxf linux-armv7-filebrowser.tar.gz -C /app \
   chmod +x /app/filebrowser
   
