@@ -13,7 +13,7 @@ RUN apk --update --no-cache add bash curl tar \
 
 COPY aria2.conf /config/aria2.conf 
 COPY ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-VOLUME /home/aria2
+#VOLUME /home/aria2
 
 EXPOSE 6800
 
