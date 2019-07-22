@@ -12,7 +12,8 @@ WORKDIR /app
 
 RUN apk --update --no-cache add bash curl tar \
   curl -sSL $FILE_BROWSER_URL \
-  tar -zxf linux-armv7-filebrowser.tar.gz 
+  tar -zxf linux-armv7-filebrowser.tar.gz \
+  chmod +x filebrowser
   
 EXPOSE 80 443
 
