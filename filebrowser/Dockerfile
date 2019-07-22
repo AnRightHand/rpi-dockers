@@ -17,4 +17,4 @@ RUN apk --update --no-cache add bash curl tar \
   
 EXPOSE 80 443
 
-CMD /app/filebrowser --config /.filebrowser.json
+CMD ["/app/filebrowser","--config /.filebrowser.json"]
