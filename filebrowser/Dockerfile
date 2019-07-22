@@ -8,10 +8,10 @@ ENV FILE_BROWSER_URL=https://github.com/filebrowser/filebrowser/releases/downloa
 WORKDIR /app
 
 RUN apk --update --no-cache add bash curl tar \
-  curl -sSL $FILE_BROWSER_URL \
-  tar -zxf linux-armv7-filebrowser.tar.gz \
-  mv filebrowser /app \
-  chmod +x /app/filebrowser
+  && curl -sSL $FILE_BROWSER_URL \
+  && tar -zxf linux-armv7-filebrowser.tar.gz \
+  && mv filebrowser /app \
+  && chmod +x /app/filebrowser
   
 EXPOSE 80 443
 
