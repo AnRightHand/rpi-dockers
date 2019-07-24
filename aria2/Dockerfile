@@ -8,7 +8,10 @@ ENV ARIA2_URL=https://github.com/q3aql/aria2-static-builds/releases/download/v${
 WORKDIR /app
 
 RUN apk --update --no-cache add bash curl tar \
-  && curl -sSL $ARIA2_URL | tar xj -C /app aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1/aria2c \
+  && curl -sSL $ARIA2_URL | tar -xj -C /app \
+  && mv /app/aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1/aria2c /app/aria2c \
+  && mv /app/aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1/ca-certificates.crt /app/ca-certificates.crt \
+  && rm -rf /app/aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1 \
   && touch /app/session.lock \
   && chmod +x /app/aria2c
   
