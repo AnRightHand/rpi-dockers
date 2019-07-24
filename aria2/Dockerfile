@@ -9,7 +9,8 @@ WORKDIR /app
 
 RUN apk --update --no-cache add bash curl tar \
   && curl -sSL $ARIA2_URL | tar xj -C /app aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1/aria2c \
-  && touch /app/session.lock 
+  && touch /app/session.lock \
+  && chmod +x /app/aria2c
   
 VOLUME /config
 
