@@ -29,4 +29,4 @@ docker run \
 -p 8888:80 \
 --name filebrowser \
 --restart=always \
-filebrowser/filebrowser
+anrighthand/rpi-filebrowser
