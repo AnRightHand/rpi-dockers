@@ -5,22 +5,16 @@ LABEL AUTHOR=AnRightHand
 ENV ARIA2_VERSION=1.34.0
 ENV ARIA2_URL=https://github.com/q3aql/aria2-static-builds/releases/download/v${ARIA2_VERSION}/aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1.tar.bz2
 
+WORKDIR /app
+
 RUN apk --update --no-cache add bash curl tar \
-  && curl -sSL $ARIA2_URL | tar xj --strip 1 -C /usr/local/bin/ aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1/aria2c \
-  && adduser -D aria2 \
-  && mkdir -p /etc/aria2 \
-  && touch /etc/aria2/session.lock 
+  && curl -sSL $ARIA2_URL | tar xj -C /app aria2-${ARIA2_VERSION}-linux-gnu-arm-rbpi-build1/aria2c \
+  && touch /app/session.lock 
   
-#RUN mkdir /config
+VOLUME /config
 
 #COPY aria2.conf /config/aria2.conf 
-#COPY ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-#VOLUME /home/aria2
-
-#RUN mkdir /config
 
 EXPOSE 6800
 
-CMD set -xe && \
- chown -R aria2:aria2 /home/aria2 && \
- aria2c --conf-path=/config/aria2.conf
+CMD /app/aria2c --conf-path=/config/aria2.conf
