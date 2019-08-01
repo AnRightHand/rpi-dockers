@@ -1,1 +1,9 @@
+FROM resin/raspberrypi3-alpine:edge
 
+LABEL AUTHOR=AnRightHand
+
+RUN apk add curl bash \
+        && curl https://getcaddy.com | bash -s personal http.webdav 
+VOLUME /config
+
+CMD [ "caddy","-conf","/config/Caddyfile" ]
