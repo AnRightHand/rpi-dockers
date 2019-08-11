@@ -18,7 +18,7 @@ RUN apk --no-cache add \
     git \
     linux-pam \
     openssh \
-    s6 \
+#    s6 \
     sqlite \
     su-exec \
     tzdata
@@ -46,7 +46,8 @@ RUN mkdir -p /app/gitea && \
 
 VOLUME ["/data"]
 
-RUN ln -s /app/gitea/gitea /usr/local/bin/gitea
+#RUN ln -s /app/gitea/gitea /usr/local/bin/gitea
 
-ENTRYPOINT ["/usr/bin/entrypoint"]
-CMD ["/bin/s6-svscan", "/etc/s6"]
+#ENTRYPOINT ["/usr/bin/entrypoint"]
+#CMD ["/bin/s6-svscan", "/etc/s6"]
+CMD /app/gitea/gitea  web -c /data/gitea/conf/app.ini
