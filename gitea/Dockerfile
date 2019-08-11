@@ -46,5 +46,5 @@ RUN mkdir -p /app/gitea && \
 
 VOLUME ["/data"]
 
-ENTRYPOINT ["/usr/bin/entrypoint"]
+#ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
