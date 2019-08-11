@@ -40,11 +40,12 @@ ENV GITEA_CUSTOM /data/gitea
 
 VOLUME ["/data"]
 
-WORKDIR /app
-
 ## GET GITEA
-RUN curl -SLo /app/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-6 && \
-    chmod +x /app/gitea
+RUN mkdir /app && \
+    curl -SLo /app/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-6 && \
+    chmod +x /app/gitea && \
+    chmod -R 777 /app && \
+    chmod -R 777 /data
 
 
 USER git
