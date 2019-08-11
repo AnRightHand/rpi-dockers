@@ -8,7 +8,7 @@ EXPOSE 22 3000
 #RUN [ "cross-build-start" ]
 
 ## GITEA RELEASE VERSION
-ENV VERSION 1.9.0
+ENV VERSION 1.8.3
 
 RUN apk --no-cache add \
     bash \
