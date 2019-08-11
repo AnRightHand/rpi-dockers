@@ -38,11 +38,12 @@ RUN addgroup \
 ENV USER git
 ENV GITEA_CUSTOM /data/gitea
 
+USER git
 
 ## GET GITEA
-RUN mkdir -p /app/gitea && \
-    curl -SLo /app/gitea/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-6 && \
-    chmod 0755 /app/gitea/gitea
+RUN mkdir -p /app && \
+    curl -SLo /app/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-6 && \
+    chmod +x /app/gitea
 
 VOLUME ["/data"]
 
@@ -50,5 +51,5 @@ VOLUME ["/data"]
 
 #ENTRYPOINT ["/usr/bin/entrypoint"]
 #CMD ["/bin/s6-svscan", "/etc/s6"]
-USER git
-CMD /app/gitea/gitea web
+
+CMD /app/gitea web
