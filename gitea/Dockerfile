@@ -5,23 +5,24 @@ LABEL AUTHOR=AnRightHand
 
 EXPOSE 22 3000
 
-RUN [ "cross-build-start" ]
+#RUN [ "cross-build-start" ]
 
 ## GITEA RELEASE VERSION
-ENV VERSION 1.8.3
+ENV VERSION 1.9.0
 
 RUN apk --no-cache add \
-    su-exec \
-    ca-certificates \
-    sqlite \
     bash \
-    git \
-    subversion \
-    linux-pam \
-    s6 \
+    ca-certificates \
     curl \
+    gettext \
+    git \
+    linux-pam \
     openssh \
+    s6 \
+    sqlite \
+    su-exec \
     tzdata
+
 RUN addgroup \
     -S -g 1000 \
     git && \
@@ -36,17 +37,12 @@ RUN addgroup \
 
 ENV USER git
 ENV GITEA_CUSTOM /data/gitea
-ENV GODEBUG=netdns=go
 
-## GET DOCKER FILES
-#RUN svn export https://github.com/go-gitea/gitea/trunk/docker ./ --force
 
 ## GET GITEA
 RUN mkdir -p /app/gitea && \
-    curl -SLo /app/gitea/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-7 && \
+    curl -SLo /app/gitea/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-6 && \
     chmod 0755 /app/gitea/gitea
-
-RUN [ "cross-build-end" ]
 
 VOLUME ["/data"]
 
