@@ -38,8 +38,8 @@ RUN addgroup \
 ENV USER git
 ENV GITEA_CUSTOM /data/gitea
 
-USER git
 WORKDIR /app
+USER git
 ## GET GITEA
 RUN curl -SLo /app/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-6 && \
     chmod +x /app/gitea
