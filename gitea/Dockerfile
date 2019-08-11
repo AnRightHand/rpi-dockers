@@ -50,4 +50,5 @@ VOLUME ["/data"]
 
 #ENTRYPOINT ["/usr/bin/entrypoint"]
 #CMD ["/bin/s6-svscan", "/etc/s6"]
+USER git
 CMD /app/gitea/gitea  web -c /data/gitea/conf/app.ini
