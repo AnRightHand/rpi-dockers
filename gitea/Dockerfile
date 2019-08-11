@@ -48,5 +48,5 @@ VOLUME ["/data"]
 
 RUN ln -s /app/gitea/gitea /usr/local/bin/gitea
 
-#ENTRYPOINT ["/usr/bin/entrypoint"]
+ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
