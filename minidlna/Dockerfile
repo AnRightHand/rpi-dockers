@@ -11,7 +11,7 @@ EXPOSE 8200
 VOLUME /config
 
 # Add config file
-ADD minidlna.conf /config/minidlna.conf
+#ADD minidlna.conf /config/minidlna.conf
 
 #ENTRYPOINT [ "/usr/sbin/minidlnad", "-S" ]
 CMD /usr/sbin/minidlnad -f /config/minidlna.conf -S
