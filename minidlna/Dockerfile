@@ -3,7 +3,7 @@ FROM resin/raspberrypi3-alpine:edge
 LABEL AUTHOR=AnRightHand
 
 # install minidlna
-RUN apk --no-cache add minidlna
+RUN apk --no-cache add minidlna && mkdir /etc
 
 # Add config file
 ADD minidlna.conf /etc/minidlna.conf
