@@ -17,4 +17,4 @@ RUN apk --update --no-cache add bash curl tar && \
 EXPOSE 8384 22000 21027/UDP
 VOLUME /config /sync
 
-CMD /app/syncthing -config /config/config.xml -no-console -no-browser
+CMD /app/syncthing -home /config/ -no-browser
