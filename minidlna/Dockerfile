@@ -3,12 +3,15 @@ FROM resin/raspberrypi3-alpine:edge
 LABEL AUTHOR=AnRightHand
 
 # install minidlna
-RUN apk --no-cache add minidlna && mkdir /etc
-
-# Add config file
-ADD minidlna.conf /etc/minidlna.conf
+RUN apk --no-cache add minidlna
 
 EXPOSE 1900/udp
 EXPOSE 8200
 
-ENTRYPOINT [ "/usr/sbin/minidlnad", "-S" ]
+VOLUME /config
+
+# Add config file
+ADD minidlna.conf /config/minidlna.conf
+
+#ENTRYPOINT [ "/usr/sbin/minidlnad", "-S" ]
+CMD /usr/sbin/minidlnad -f /config/minidlna.conf -S

@@ -24,7 +24,7 @@ RUN apk --update --no-cache add bash curl tar && \
   curl -sSL $SYNCTHING_URL | tar -zx -C /app && \
   mv /app/syncthing-linux-arm-v$SYNCTHING_VERSION/* /app && \
   rm -rf /app/syncthing-linux-arm-v$SYNCTHING_VERSION && \
-  chmod +x /app/syncthing
+  chmod +x /app/syncthing && \
   chmod -R 777 /app && \
   chmod -R 777 /config && \
   chmod -R 777 /sync
