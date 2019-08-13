@@ -1,0 +1,10 @@
+:80 {
+ root /webroot/caddy/welcome
+ timeouts none
+ gzip
+ basicauth /webdav admin admin
+ webdav /webdav/ {
+  scope /webroot/
+  modify false
+ }
+}

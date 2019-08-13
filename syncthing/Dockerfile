@@ -32,4 +32,4 @@ RUN apk --update --no-cache add bash curl tar && \
 
 USER syncthing
 
-CMD /app/syncthing -home /config/ -no-browser
+CMD /app/syncthing -home /config/ -no-browser -gui-address 0.0.0.0:8384

@@ -1,0 +1,9 @@
+{
+  "address": "0.0.0.0",
+  "port": 80,
+  "locale": "zh-cn",
+  "baseURL": "/files/",
+  "log": "stdout",
+  "database": "/database.db",
+  "root": "/srv" 
+}

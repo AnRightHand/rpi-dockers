@@ -1,0 +1,94 @@
+version: '3'
+
+services:
+
+  portainer:
+    container_name: rpi-portainer
+    image: portainer/portainer:linux-arm
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/udisk/portainer:/data
+
+  aria2:
+    container_name: aria2
+    image: anrighthand/rpi-aria2
+    restart: always
+    ports:
+      - "6800:6800"
+      - "6881-6999:6881-6999"
+    volumes:
+      - /mnt/udisk/aria/conf:/config
+      - /mnt/udisk/aria/download:/downloads
+
+  filebrowser:
+    container_name: rpi-filebrowser
+    image: anrighthand/rpi-filebrowser
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - /mnt/udisk/filebrowser/conf/filebrowser.json:/.filebrowser.json
+      - /mnt/udisk/filebrowser/conf/filebrowser.db:/database.db
+      - /mnt/udisk:/srv
+
+  caddy:
+    container_name: rpi-caddy
+    image: anrighthand/rpi-caddy
+    privileged: true
+    restart: always
+    ports:
+      - "8081:80"
+      - "8443:443"
+    volumes:
+      - /mnt/udisk/caddy/conf:/config
+      - /mnt/udisk:/webroot
+
+  gitea:
+    container_name: rpi-gitea
+    image: anrighthand/rpi-gitea
+    restart: always
+    ports:
+      - "3000:3000"
+      - "8822:22"
+    volumes:
+      - /mnt/udisk/gitea:/data
+
+  syncthing:
+    container_name: rpi-syncthing
+    image: anrighthand/rpi-syncthing
+    restart: always
+    ports:
+      - "22000:22000"
+      - "8384:8384"
+      - "21027:21027/udp"
+    volumes:
+      - /mnt/udisk/syncthing/conf:/config
+      - /mnt/udisk/syncthing/data:/sync
+      - /mnt/udisk/syncthing/data:/data1
+      - /mnt/udisk/syncthing/data2:/data2
+
+  baiduyun:
+    container_name: baiduyun
+    image: anrighthand/rpi-baidupcs-web
+    restart: always
+    ports:
+      - "5299:5299"
+    volumes:
+      - /mnt/udisk/baiduyun/conf:/config
+      - /mnt/udisk/baiduyun/Downloads:/root/Downloads
+      
+  minidlna:
+    container_name: minidlna
+    image: anrighthand/rpi-minidlna
+    restart: always
+    network_mode: host
+    ports
+      - "8200:8200"
+      - "1900:1900/udp"
+    volumes:
+      - /mnt/udisk/minidlna/conf:/config
+      - /mnt/udisk:/data
