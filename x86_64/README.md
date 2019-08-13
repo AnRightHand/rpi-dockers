@@ -1,2 +1,1 @@
-不适用与RPI 适用于x86_64(amd64)平台的docker
-
+涓嶉�傜敤涓嶳PI 閫傜敤浜巟86_64(amd64)骞冲彴鐨刣ocker
