@@ -3,7 +3,7 @@ FROM resin/raspberrypi3-alpine:edge
 LABEL AUTHOR=AnRightHand
 
 # install minidlna
-RUN apk --no-cache add minidlna
+RUN apk --no-cache add minidlna curl
 
 EXPOSE 1900/udp
 EXPOSE 8200
@@ -12,6 +12,8 @@ VOLUME /config
 
 # Add config file
 #ADD minidlna.conf /config/minidlna.conf
+RUN curl -sSL -o /app/minidlna.conf https://github.com/AnRightHand/rpi-dockers/raw/master/minidlna/minidlna.conf && \
+  mv -n /app/minidlna.conf /config/minidlna.conf
 
 #ENTRYPOINT [ "/usr/sbin/minidlnad", "-S" ]
 CMD /usr/sbin/minidlnad -f /config/minidlna.conf -S

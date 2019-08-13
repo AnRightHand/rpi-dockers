@@ -18,7 +18,8 @@ RUN apk --update --no-cache add bash curl tar && \
   
 VOLUME /config
 
-#COPY aria2.conf /config/aria2.conf 
+RUN curl -sSL -o /app/aria2.conf https://github.com/AnRightHand/rpi-dockers/raw/master/aria2/aria2.conf && \
+  mv -n /app/aria2.conf /config/aria2.conf
 
 EXPOSE 6800
 

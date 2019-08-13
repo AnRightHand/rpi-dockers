@@ -6,4 +6,7 @@ RUN apk add curl bash \
         && curl https://getcaddy.com | bash -s personal http.webdav 
 VOLUME /config
 
+RUN curl -sSL -o /app/Caddyfile https://github.com/AnRightHand/rpi-dockers/raw/master/caddy/Caddyfile && \
+  mv -n /app/Caddyfile /config/Caddyfile
+
 CMD [ "caddy","-conf","/config/Caddyfile" ]
