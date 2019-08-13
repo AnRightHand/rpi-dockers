@@ -13,7 +13,7 @@ RUN apk --update --no-cache add bash curl tar && \
 ##  rm linux-armv7-filebrowser.tar.gz && \
   chmod +x /app/filebrowser
   
-RUN curl -sSL -o /app/filebrowser.json https://github.com/AnRightHand/rpi-dockers/raw/master/filebrowser/filebrowser.json && \
+RUN curl -sSL -o /app/filebrowser.json https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/filebrowser/filebrowser.json && \
   mv -n /app/filebrowser.json /config/.filebrowser.json 
   
 EXPOSE 80 443
