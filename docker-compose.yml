@@ -14,7 +14,7 @@ services:
       - /mnt/udisk/portainer:/data
 
   aria2:
-    container_name: aria2
+    container_name: rpi-aria2
     image: anrighthand/rpi-aria2
     restart: always
     ports:
@@ -71,8 +71,8 @@ services:
       - /mnt/udisk/syncthing/data:/data1
       - /mnt/udisk/syncthing/data2:/data2
 
-  baiduyun:
-    container_name: baiduyun
+  baiduPCS:
+    container_name: rpi-baiduPCS
     image: anrighthand/rpi-baidupcs-web
     restart: always
     ports:
@@ -82,7 +82,7 @@ services:
       - /mnt/udisk/baiduyun/Downloads:/root/Downloads
       
   minidlna:
-    container_name: minidlna
+    container_name: rpi-minidlna
     image: anrighthand/rpi-minidlna
     restart: always
     network_mode: host

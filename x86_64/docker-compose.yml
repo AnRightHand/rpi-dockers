@@ -74,8 +74,8 @@ services:
       - /docker/data/sync:/data1
       - /docker/data/other/sync:/data2
 
-  baiduyun:
-    container_name: baiduyun
+  baiduPCS:
+    container_name: baiduPCS
     build:
       context: ./
       dockerfile: Dockerfile-baiduPCS-Web
