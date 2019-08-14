@@ -31,8 +31,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /mnt/udisk/filebrowser/conf/filebrowser.json:/.filebrowser.json
-      - /mnt/udisk/filebrowser/conf/filebrowser.db:/database.db
+      - /mnt/udisk/filebrowser/conf:/config
       - /mnt/udisk:/srv
 
   caddy:

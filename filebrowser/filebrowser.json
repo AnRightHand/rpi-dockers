@@ -4,6 +4,6 @@
   "locale": "zh-cn",
   "baseURL": "/files/",
   "log": "stdout",
-  "database": "/database.db",
+  "database": "/config/database.db",
   "root": "/srv" 
 }

@@ -20,7 +20,7 @@ services:
     restart: always
     ports:
       - "6800:6800"
-      - "6881-6999:6881-6999/udp"
+      - "6881-6899:6881-6899/udp"
     volumes:
       - /mnt/docker/conf/aria2:/config
       - /mnt/docker/data/downloads:/data
@@ -35,8 +35,7 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - /mnt/docker/conf/filebrowser/filebrowser.json:/.filebrowser.json
-      - /mnt/docker/conf/filebrowser/database.db:/database.db
+      - /mnt/docker/conf/filebrowser:/config
       - /mnt/docker/data:/srv
 
   caddy:
@@ -94,6 +93,6 @@ services:
     restart: always
     ports:
       - "1081-1089:1081-1089"
-      - "1091-1099:1091-1099/udp"
+      - "1091-1095:1091-1095/udp"
     volumes:
       - /mnt/docker/conf/v2ray/config.json:/etc/v2ray/config.json
