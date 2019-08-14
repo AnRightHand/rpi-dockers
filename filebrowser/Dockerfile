@@ -16,6 +16,6 @@ EXPOSE 80 443
 
 CMD /app/filebrowser --config /.filebrowser.json
 
-#RUN curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/filebrowser/run.sh
+#RUN curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/filebrowser/run.sh && chmod +x /app/run.sh
 
 #CMD /app/run.sh

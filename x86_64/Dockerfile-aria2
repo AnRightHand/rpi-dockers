@@ -21,6 +21,6 @@ EXPOSE 6800 6881-6999/udp
 
 #CMD /app/aria2c --conf-path=/config/aria2.conf
 
-RUN curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/aria2/run.sh
+RUN curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/aria2/run.sh && chmod +x /app/run.sh
 
 CMD /app/run.sh
