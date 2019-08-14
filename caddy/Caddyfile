@@ -1,5 +1,5 @@
 :80 {
- root /webroot/caddy/welcome
+ root /webroot/caddy/www
  timeouts none
  gzip
  basicauth /webdav admin admin

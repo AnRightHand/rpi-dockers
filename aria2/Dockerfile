@@ -2,8 +2,8 @@ FROM resin/raspberrypi3-alpine:edge
 
 LABEL AUTHOR=AnRightHand
 
-ENV ARIA2_VERSION=1.34.0
 ENV ARCH=arm-rbpi
+ENV ARIA2_VERSION=1.34.0
 ENV ARIA2_URL=https://github.com/q3aql/aria2-static-builds/releases/download/v${ARIA2_VERSION}/aria2-${ARIA2_VERSION}-linux-gnu-${ARCH}-build1.tar.bz2
 
 WORKDIR /app
@@ -17,10 +17,10 @@ RUN apk --update --no-cache add bash curl tar && \
   chmod +x /app/aria2c
   
 VOLUME /config
-
-RUN curl -sSL -o /app/aria2.conf https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/aria2/aria2.conf && \
-  mv -n /app/aria2.conf /config/aria2.conf
-
-EXPOSE 6800
+EXPOSE 6800 6881-6999/udp
 
 CMD /app/aria2c --conf-path=/config/aria2.conf
+
+#RUN curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/aria2/run.sh
+
+#CMD /app/run.sh

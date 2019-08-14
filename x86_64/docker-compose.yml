@@ -20,7 +20,7 @@ services:
     restart: always
     ports:
       - "6800:6800"
-      - "6881-6999:6881-6999"
+      - "6881-6999:6881-6999/udp"
     volumes:
       - /mnt/docker/conf/aria2:/config
       - /mnt/docker/data/downloads:/data
@@ -28,7 +28,9 @@ services:
 
   filebrowser:
     container_name: filebrowser
-    image: filebrowser/filebrowser
+    build:
+      context: ./
+      dockerfile: Dockerfile-filebrowser
     restart: always
     ports:
       - "8081:80"

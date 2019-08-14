@@ -5,8 +5,10 @@ LABEL AUTHOR=AnRightHand
 RUN apk add curl bash \
         && curl https://getcaddy.com | bash -s personal http.webdav 
 VOLUME /config
-
-RUN mkdir /app &&  curl -sSL -o /app/Caddyfile https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/caddy/Caddyfile && \
-  mv -n /app/Caddyfile /config/Caddyfile
+EXPOSE 80 443
 
 CMD [ "caddy","-conf","/config/Caddyfile" ]
+
+#RUN mkdir /app && curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/caddy/run.sh
+
+#CMD /app/run.sh

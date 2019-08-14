@@ -19,7 +19,7 @@ services:
     restart: always
     ports:
       - "6800:6800"
-      - "6881-6999:6881-6999"
+      - "6881-6999:6881-6999/udp"
     volumes:
       - /mnt/udisk/aria/conf:/config
       - /mnt/udisk/aria/download:/downloads
