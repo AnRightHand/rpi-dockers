@@ -5,4 +5,5 @@ wget https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/x86_64/Doc
 wget https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/x86_64/Dockerfile-caddy
 wget https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/x86_64/Dockerfile-baiduPCS-Web
 wget https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/x86_64/Dockerfile-minidlna
+wget https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/x86_64/Dockerfile-filebrowser
 wget https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/x86_64/README.md
