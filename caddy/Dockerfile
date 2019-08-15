@@ -9,6 +9,7 @@ EXPOSE 80 443
 
 CMD [ "caddy","-conf","/config/Caddyfile" ]
 
-#RUN mkdir /app && curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/caddy/run.sh && chmod +x /app/run.sh
+#RUN mkdir -p /app && curl -sSL -o /app/Caddyfile https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/caddy/Caddyfile && \
+#  curl -sSL -o /app/run.sh https://raw.githubusercontent.com/AnRightHand/rpi-dockers/master/caddy/run.sh && chmod +x /app/run.sh
 
 #CMD /app/run.sh

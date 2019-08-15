@@ -1,8 +1,8 @@
-FROM resin/raspberrypi3-alpine:edge
+FROM alpine:edge
 
 LABEL AUTHOR=AnRightHand
 
-ENV ARCH=arm
+ENV ARCH=amd64
 ENV SYNCTHING_VERSION=1.2.1
 ENV SYNCTHING_URL=https://github.com/syncthing/syncthing/releases/download/v${SYNCTHING_VERSION}/syncthing-linux-${ARCH}-v${SYNCTHING_VERSION}.tar.gz
 

@@ -8,7 +8,7 @@ ENV BAIDUPCS_WEB_URL=https://github.com/liuzhuoling2011/baidupcs-web/releases/do
 
 WORKDIR /app
 
-RUN apk add --no-cache wget bash gnupg && \
+RUN apk add --no-cache wget bash gnupg unzip && \
  wget $BAIDUPCS_WEB_URL && \
  unzip BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip && \
  rm BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip && \

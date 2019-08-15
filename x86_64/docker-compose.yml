@@ -63,7 +63,9 @@ services:
 
   syncthing:
     container_name: syncthing
-    image: syncthing/syncthing
+    build:
+      context: ./
+      dockerfile: Dockerfile-syncthing
     restart: always
     ports:
       - "22000:22000"
@@ -89,10 +91,12 @@ services:
 
   v2ray:
     container_name: v2ray
-    image: v2ray/official
+    build:
+      context: ./
+      dockerfile: Dockerfile-v2
     restart: always
     ports:
       - "1081-1089:1081-1089"
       - "1091-1095:1091-1095/udp"
     volumes:
-      - /mnt/docker/conf/v2ray/config.json:/etc/v2ray/config.json
+      - /mnt/docker/conf/v2ray/:/config
