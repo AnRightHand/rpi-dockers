@@ -3,7 +3,7 @@ FROM resin/raspberrypi3-alpine:edge
 LABEL AUTHOR=AnRightHand
 
 ENV ARCH=arm
-ENV BAIDUPCS_WEB_VERSION=3.6.7
+ENV BAIDUPCS_WEB_VERSION=3.6.8
 ENV BAIDUPCS_WEB_URL=https://github.com/liuzhuoling2011/baidupcs-web/releases/download/${BAIDUPCS_WEB_VERSION}/BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip
 
 WORKDIR /app
