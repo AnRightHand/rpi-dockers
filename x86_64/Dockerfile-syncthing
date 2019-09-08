@@ -3,7 +3,7 @@ FROM alpine:edge
 LABEL AUTHOR=AnRightHand
 
 ENV ARCH=amd64
-ENV SYNCTHING_VERSION=1.2.1
+ENV SYNCTHING_VERSION=1.2.2
 ENV SYNCTHING_URL=https://github.com/syncthing/syncthing/releases/download/v${SYNCTHING_VERSION}/syncthing-linux-${ARCH}-v${SYNCTHING_VERSION}.tar.gz
 
 EXPOSE 8384 22000 21027/UDP
