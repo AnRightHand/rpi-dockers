@@ -7,6 +7,7 @@ services:
     image: portainer/portainer
     command: -H unix:///var/run/docker.sock
     restart: always
+    network_mode: "bridge"
     ports:
       - "9000:9000"
     volumes:
@@ -18,6 +19,7 @@ services:
       context: ./
       dockerfile: Dockerfile-aria2
     restart: always
+    network_mode: "host"
     ports:
       - "6800:6800"
       - "6881-6899:6881-6899/udp"
@@ -32,6 +34,7 @@ services:
       context: ./
       dockerfile: Dockerfile-filebrowser
     restart: always
+    network_mode: "bridge"
     ports:
       - "8081:80"
     volumes:
@@ -44,22 +47,25 @@ services:
       context: ./
       dockerfile: Dockerfile-caddy
     restart: always
+    network_mode: "bridge"
     ports:
       - "8080:80"
-      - "8443:443"
+      - "8443:8443"
     volumes:
       - /mnt/docker/conf/caddy:/config
       - /mnt/docker/data:/webroot
+
 
   gitea:
     container_name: gitea
     image: gitea/gitea
     restart: always
+    network_mode: "bridge"
     ports:
       - "3000:3000"
       - "8822:22"
     volumes:
-      - /mnt/docker/data/gitea:/data
+      - /mnt/docker/conf/gitea:/data
 
   syncthing:
     container_name: syncthing
@@ -67,6 +73,7 @@ services:
       context: ./
       dockerfile: Dockerfile-syncthing
     restart: always
+    network_mode: "bridge"
     ports:
       - "22000:22000"
       - "8384:8384"
@@ -83,11 +90,22 @@ services:
       context: ./
       dockerfile: Dockerfile-baiduPCS-Web
     restart: always
+    network_mode: "bridge"
     ports:
       - "5299:5299"
     volumes:
       - /mnt/docker/data/BDdownloads:/root/Download
       - /mnt/docker/data/other/BDdownloads:/root/Downloads
+
+  nexus3:
+    container_name: nexus3
+    image: sonatype/nexus3
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - "8082:8081"
+    volumes:
+      - /mnt/docker/data/nexus3:/nexus-data
 
   v2ray:
     container_name: v2ray
@@ -95,6 +113,7 @@ services:
       context: ./
       dockerfile: Dockerfile-v2
     restart: always
+    network_mode: "host"
     ports:
       - "1081-1089:1081-1089"
       - "1091-1095:1091-1095/udp"
