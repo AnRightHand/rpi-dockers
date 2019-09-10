@@ -14,9 +14,9 @@ WORKDIR /usr/src/app
 # 基础镜像已经包含pip组件
 RUN apk update && \
     apk add bash curl autoconf g++ unzip  && \
-    pip install --no-cache-dir -r requirements.txt && \
     curl -o master.zip -sSL $QIANDAO_URL && \
     unzip master.zip && \
-    mv ./qiandao-master/* ./
+    mv ./qiandao-master/* ./  && \
+    pip install --no-cache-dir -r requirements.txt
 
 CMD ["python","/usr/src/app/run.py"]
