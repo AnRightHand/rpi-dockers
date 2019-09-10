@@ -106,7 +106,19 @@ services:
       - "8082:8081"
     volumes:
       - /mnt/docker/data/nexus3:/nexus-data
-
+      
+  auto-qiandao:
+    container_name: auto-qiandao
+    build:
+      context: ./
+      dockerfile: Dockerfile-auto-qiandao
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - "8083:80"
+    volumes:
+      - /mnt/docker/conf/qiandao:/config
+  
   v2ray:
     container_name: v2ray
     build:
