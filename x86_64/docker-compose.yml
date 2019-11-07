@@ -136,6 +136,8 @@ services:
   nexus3:
     container_name: nexus3
     image: sonatype/nexus3
+    environment:
+      - INSTALL4J_ADD_VM_PARAMS= -Xms256m -Xmx256m -XX:MaxDirectMemorySize=512M -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.util.prefs.userRoot=/nexus-data/javaprefs
     restart: always
     network_mode: "bridge"
     ports:
@@ -164,7 +166,24 @@ services:
       options:
         max-size: "10M"
         max-file: "3"
-  
+
+  rclone-gui:
+    container_name: rclone-gui
+    image: rclone/rclone
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - "8084:8080"
+    volumes:
+      - /mnt/docker/conf/rclone:/config/rclone
+      - /mnt/docker/data:/data
+    command: rcd --rc-web-gui --rc-baseurl rclone --rc-addr :8080 --rc-user user --rc-pass password --rc-serve --buffer-size 128M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10M"
+        max-file: "3"
+
   v2ray:
     container_name: v2ray
     build:
