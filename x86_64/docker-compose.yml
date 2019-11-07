@@ -67,6 +67,7 @@ services:
     ports:
       - "8080:80"
       - "8443:8443"
+      - "443:8443"
     volumes:
       - /mnt/docker/conf/caddy:/config
       - /mnt/docker/data:/webroot
@@ -173,7 +174,9 @@ services:
     network_mode: "host"
     ports:
       - "1081-1089:1081-1089"
-      - "1091-1095:1091-1095/udp"
+      - "1081-1089:1081-1089/udp"
+      - "1091-1099:1091-1099"
+      - "1091-1099:1091-1099/udp"
     volumes:
       - /mnt/docker/conf/v2ray/:/config
     logging:
