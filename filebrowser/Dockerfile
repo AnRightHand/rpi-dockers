@@ -3,7 +3,7 @@ FROM resin/raspberrypi3-alpine:edge
 LABEL AUTHOR=AnRightHand
 
 ENV ARCH=armv7
-ENV FILE_BROWSER_VERSION=v2.0.12
+ENV FILE_BROWSER_VERSION=v2.0.16
 ENV FILE_BROWSER_URL=https://github.com/filebrowser/filebrowser/releases/download/${FILE_BROWSER_VERSION}/linux-${ARCH}-filebrowser.tar.gz
 
 WORKDIR /app
