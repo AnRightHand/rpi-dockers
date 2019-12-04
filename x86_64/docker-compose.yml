@@ -5,6 +5,9 @@ services:
   portainer:
     container_name: portainer
     image: portainer/portainer
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     command: -H unix:///var/run/docker.sock
     restart: always
     network_mode: "bridge"
@@ -12,6 +15,7 @@ services:
       - "9000:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/data/portainer:/data
     logging:
       driver: "json-file"
@@ -24,12 +28,16 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-aria2
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "host"
     ports:
       - "6800:6800"
       - "6881-6899:6881-6899/udp"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/aria2:/config
       - /mnt/docker/data/downloads:/data
       - /mnt/docker/data/other/downloads:/downloads
@@ -44,11 +52,15 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-filebrowser
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
       - "8081:80"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/filebrowser:/config
       - /mnt/docker/data:/srv
     logging:
@@ -62,6 +74,9 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-caddy
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
@@ -69,6 +84,7 @@ services:
       - "8443:8443"
       - "443:8443"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/caddy:/config
       - /mnt/docker/data:/webroot
     logging:
@@ -80,12 +96,16 @@ services:
   gitea:
     container_name: gitea
     image: gitea/gitea
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
       - "3000:3000"
       - "8822:22"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/gitea:/data
     logging:
       driver: "json-file"
@@ -98,6 +118,9 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-syncthing
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
@@ -105,6 +128,7 @@ services:
       - "8384:8384"
       - "21027:21027/udp"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/syncthing:/config
       - /mnt/docker/data/sync:/sync
       - /mnt/docker/data/sync:/data1
@@ -120,11 +144,15 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-baiduPCS-Web
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
       - "5299:5299"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/data/BDdownloads:/root/Download
       - /mnt/docker/data/other/BDdownloads:/root/Downloads
     logging:
@@ -137,12 +165,15 @@ services:
     container_name: nexus3
     image: sonatype/nexus3
     environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
       - INSTALL4J_ADD_VM_PARAMS= -Xms256m -Xmx256m -XX:MaxDirectMemorySize=512M -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.util.prefs.userRoot=/nexus-data/javaprefs
     restart: always
     network_mode: "bridge"
     ports:
       - "8082:8081"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/data/nexus3:/nexus-data
     logging:
       driver: "json-file"
@@ -155,11 +186,15 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-auto-qiandao
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
       - "8083:80"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/qiandao:/config
     logging:
       driver: "json-file"
@@ -170,11 +205,15 @@ services:
   rclone-gui:
     container_name: rclone-gui
     image: rclone/rclone
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "bridge"
     ports:
       - "8084:8080"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/rclone:/config/rclone
       - /mnt/docker/data:/data
     command: rcd --rc-web-gui --rc-baseurl rclone --rc-addr :8080 --rc-user user --rc-pass password --rc-serve --buffer-size 128M
@@ -189,6 +228,9 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-v2
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
     restart: always
     network_mode: "host"
     ports:
@@ -197,6 +239,7 @@ services:
       - "1091-1099:1091-1099"
       - "1091-1099:1091-1099/udp"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /mnt/docker/conf/v2ray/:/config
     logging:
       driver: "json-file"
