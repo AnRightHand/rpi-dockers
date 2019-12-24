@@ -15,7 +15,7 @@ RUN apk --update --no-cache add bash curl unzip && \
   curl -o v2ray.zip -sSL $V2RAY_URL && \
   unzip v2ray.zip && \
   rm v2ray.zip && \
-  mv /app/v2ray/* /app && \
+#  mv /app/v2ray/* /app && \
   chmod +x /app/v2ray && \
   chmod +x /app/v2ctl && \
   curl -sSL -o /app/h2y.dat $H2Y_DAT_URL
