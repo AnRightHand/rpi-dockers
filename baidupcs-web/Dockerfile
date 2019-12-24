@@ -2,13 +2,15 @@ FROM resin/raspberrypi3-alpine:edge
 
 LABEL AUTHOR=AnRightHand
 
-ENV ARCH=arm
-ENV BAIDUPCS_WEB_VERSION=3.6.8
-ENV BAIDUPCS_WEB_URL=https://github.com/liuzhuoling2011/baidupcs-web/releases/download/${BAIDUPCS_WEB_VERSION}/BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip
+ARG ARCH=arm
+#ENV BAIDUPCS_WEB_VERSION=$VERSION 
+#ENV BAIDUPCS_WEB_URL=https://github.com/liuzhuoling2011/baidupcs-web/releases/download/${BAIDUPCS_WEB_VERSION}/BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip
 
 WORKDIR /app
 
-RUN apk add --no-cache wget bash gnupg && \
+RUN  apk add --no-cache wget bash gnupg curl && \
+ BAIDUPCS_WEB_VERSION=$(curl -s https://api.github.com/repos/liuzhuoling2011/baidupcs-web/releases/latest --connect-timeout 10| grep 'tag_name' | cut -d\" -f4 ) && \
+ BAIDUPCS_WEB_URL=https://github.com/liuzhuoling2011/baidupcs-web/releases/download/${BAIDUPCS_WEB_VERSION}/BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip && \
  wget $BAIDUPCS_WEB_URL && \
  unzip BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip && \
  rm BaiduPCS-Go-${BAIDUPCS_WEB_VERSION}-linux-${ARCH}.zip && \
