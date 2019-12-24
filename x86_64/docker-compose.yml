@@ -180,7 +180,27 @@ services:
       options:
         max-size: "10M"
         max-file: "3"
-      
+        
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts
+    environment:
+      - LANG= zh_CN.UTF-8
+      - TZ= Asia/Shanghai
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - "50000:50000"
+      - "8085:8080"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/docker/data/jenkins:/var/jenkins_home
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10M"
+        max-file: "3"
+        
   auto-qiandao:
     container_name: auto-qiandao
     build:
