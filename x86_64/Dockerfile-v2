@@ -20,15 +20,15 @@ RUN apk --update --no-cache add bash curl unzip && \
   chmod +x /app/v2ctl && \
   curl -sSL -o /app/h2y.dat $H2Y_DAT_URL
 
-RUN echo -e "curl -f -sSL -o /app/h2y.dat $H2Y_DAT_URL || true\n" >> /app/run.sh
-  echo -e "if [[ ! -f "/config/config.json" ]]; then\n" >> /app/run.sh
-  echo -e "rm -f /app/config.json && cp /app/vpoint_vmess_freedom.json /app/config.json\n" >> /app/run.sh
-  echo -e "let PORT=$RANDOM+10000\n" >> /app/run.sh
-  echo -e "UUID=$(cat /proc/sys/kernel/random/uuid)\n" >> /app/run.sh
-  echo -e "sed -i "s/10086/${PORT}/g" "/app/config.json"\n" >> /app/run.sh
-  echo -e "sed -i "s/23ad6b10-8d1a-40f7-8ad0-e3e35cd38297/${UUID}/g" "/app/config.json"\n" >> /app/run.sh
-  echo -e "mv -n /app/config.json /config/config.json\n" >> /app/run.sh
-  echo -e "fi\n" >> /app/run.sh
+RUN echo -e "curl -f -sSL -o /app/h2y.dat $H2Y_DAT_URL || true\n" >> /app/run.sh && \
+  echo -e "if [[ ! -f "/config/config.json" ]]; then\n" >> /app/run.sh && \
+  echo -e "rm -f /app/config.json && cp /app/vpoint_vmess_freedom.json /app/config.json\n" >> /app/run.sh && \
+  echo -e "let PORT=$RANDOM+10000\n" >> /app/run.sh && \
+  echo -e "UUID=$(cat /proc/sys/kernel/random/uuid)\n" >> /app/run.sh && \
+  echo -e "sed -i "s/10086/${PORT}/g" "/app/config.json"\n" >> /app/run.sh && \
+  echo -e "sed -i "s/23ad6b10-8d1a-40f7-8ad0-e3e35cd38297/${UUID}/g" "/app/config.json"\n" >> /app/run.sh && \
+  echo -e "mv -n /app/config.json /config/config.json\n" >> /app/run.sh && \
+  echo -e "fi\n" >> /app/run.sh && \
   echo "/app/v2ray --config=/config/config.json" >> /app/run.sh && chmod +x /app/run.sh
 
 CMD /app/run.sh
