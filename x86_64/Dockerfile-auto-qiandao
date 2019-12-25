@@ -9,7 +9,7 @@ ENV PORT 80
 EXPOSE $PORT/tcp
 # 添加挂载点
 #VLUME ["/usr/src/app/"]
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # 基础镜像已经包含pip组件
 RUN apk update && \
@@ -19,4 +19,4 @@ RUN apk update && \
     mv ./qiandao-master/* ./  && \
     pip install --no-cache-dir -r requirements.txt
 
-CMD ["python","/usr/src/app/run.py"]
+CMD ["python","/app/run.py"]
