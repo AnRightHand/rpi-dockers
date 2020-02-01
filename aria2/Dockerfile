@@ -1,6 +1,6 @@
 FROM resin/raspberrypi3-alpine:edge
 
-LABEL AUTHOR=AnRightHand
+LABEL AUTHOR=aymtools
 
 ENV ARCH=arm-rbpi
 ENV ARIA2_VERSION=1.35.0
