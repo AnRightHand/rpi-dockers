@@ -1,6 +1,6 @@
 FROM resin/raspberrypi3-alpine:edge
 
-LABEL AUTHOR=AnRightHand
+LABEL AUTHOR=aymtools
 
 ARG ARCH=arm
 #ENV BAIDUPCS_WEB_VERSION=$VERSION 
