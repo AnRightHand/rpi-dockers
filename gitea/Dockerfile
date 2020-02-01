@@ -1,6 +1,6 @@
 FROM resin/raspberrypi3-alpine:edge
 
-LABEL AUTHOR=AnRightHand
+LABEL AUTHOR=aymtools
 
 
 EXPOSE 22 3000
