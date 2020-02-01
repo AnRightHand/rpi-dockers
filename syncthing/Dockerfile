@@ -1,6 +1,6 @@
 FROM resin/raspberrypi3-alpine:edge
 
-LABEL AUTHOR=AnRightHand
+LABEL AUTHOR=aymtools
 
 ENV ARCH=arm
 ENV SYNCTHING_VERSION=1.3.2
