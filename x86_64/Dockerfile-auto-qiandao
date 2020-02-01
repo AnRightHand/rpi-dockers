@@ -1,7 +1,7 @@
 # 基础镜像
 FROM python:2.7-alpine
 # 维护者信息
-LABEL maintainer "AnRightHand"
+LABEL maintainer "aymtools"
 
 ENV QIANDAO_URL=https://github.com/binux/qiandao/archive/master.zip
 
