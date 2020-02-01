@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-LABEL AUTHOR=AnRightHand
+LABEL AUTHOR=aymtools
 
 ENV ARCH=64
 ENV V2RAY_VERSION=4.21.3
