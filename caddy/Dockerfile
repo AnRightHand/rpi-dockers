@@ -1,6 +1,6 @@
 FROM resin/raspberrypi3-alpine:edge
 
-LABEL AUTHOR=AnRightHand
+LABEL AUTHOR=aymtools
 
 RUN apk add curl bash \
         && curl https://getcaddy.com | bash -s personal http.webdav 
